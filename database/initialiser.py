@@ -12,6 +12,7 @@ def create_db():
 def create_tables():
     cnx = con.get_db()
     cursor = cnx.cursor()
+    print("Table Creation Initiated")
     for table in tables.TABLES:
         cursor.execute(table)
     print("Table Creation Successful")

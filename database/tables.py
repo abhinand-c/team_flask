@@ -1,6 +1,6 @@
 TABLES = [ x.replace("\n", " ") for x in [
         """
-        CREATE TABLE User(
+        CREATE TABLE USER(
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(50) NOT NULL,
             contact VARCHAR(12),
@@ -9,7 +9,7 @@ TABLES = [ x.replace("\n", " ") for x in [
         );
         """,
         """
-        CREATE TABLE Team(
+        CREATE TABLE TEAM(
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(50) NOT NULL,
             manager INT,
@@ -18,13 +18,13 @@ TABLES = [ x.replace("\n", " ") for x in [
         );
         """,
         """
-        CREATE TABLE TeamMembership(
+        CREATE TABLE MEMBERSHIP(
             id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             team INT,
             user INT,
             remarks VARCHAR(30),
-            CONSTRAINT `Membership_team_fk` FOREIGN KEY (`team`) REFERENCES `Team` (`id`)	ON DELETE CASCADE,
-            CONSTRAINT `Membership_user_fk` FOREIGN KEY (`user`) REFERENCES `User` (`id`)	ON DELETE CASCADE
+            CONSTRAINT `Membership_team_fk` FOREIGN KEY (`team`) REFERENCES `TEAM` (`id`)	ON DELETE CASCADE,
+            CONSTRAINT `Membership_user_fk` FOREIGN KEY (`user`) REFERENCES `USER` (`id`)	ON DELETE CASCADE
         );
         """,
     ]

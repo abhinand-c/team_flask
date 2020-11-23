@@ -23,9 +23,9 @@ def get_or_none(obj, key):
 
 @app.route('/')
 def home():
-    user_list=db_op.get_data("user")
-    team_list = db_op.get_data("team")
-    member_list=db_op.get_data("teammembership")
+    user_list=db_op.get_data("USER")
+    team_list = db_op.get_data("TEAM")
+    member_list=db_op.get_data("MEMBERSHIP")
 
     for team in team_list:
         team["manager"] = get_or_none(get_obj(user_list, "id" ,team["manager"]),"name")
@@ -45,7 +45,7 @@ def home():
 @app.route('/user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
-        db_op.add_data('user', clean_dict(request.form.to_dict()))
+        db_op.add_data('USER', clean_dict(request.form.to_dict()))
         return redirect("/")
 
     return render_template(
@@ -57,10 +57,10 @@ def add_user():
 @app.route('/team', methods=['GET', 'POST'])
 def add_team():
     if request.method == 'POST':
-        db_op.add_data('team',clean_dict(request.form.to_dict()))
+        db_op.add_data('TEAM',clean_dict(request.form.to_dict()))
         return redirect("/")
 
-    user_list=db_op.get_data("user")
+    user_list=db_op.get_data("USER")
 
     return render_template(
         'team.html',
@@ -72,11 +72,11 @@ def add_team():
 @app.route('/member', methods=['GET', 'POST'])
 def add_member():
     if request.method == 'POST':
-        db_op.add_data('teammembership',clean_dict(request.form.to_dict()))
+        db_op.add_data('MEMBERSHIP',clean_dict(request.form.to_dict()))
         return redirect("/")
 
-    user_list=db_op.get_data("user")
-    team_list = db_op.get_data("team")
+    user_list=db_op.get_data("USER")
+    team_list = db_op.get_data("TEAM")
 
     return render_template(
         'member.html',
