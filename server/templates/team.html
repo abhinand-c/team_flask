@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Team Creation</h5>
+          </div>
+           <form method="post" action="">
+          <div class="card-body">
+
+			     <div class="row">
+                <div class="col-12 pr-md-5">
+                  <div class="form-group">
+                    <label>Team Name</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name">
+                  </div>
+                </div>
+
+              </div>
+			      <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Team Description</label>
+                    <textarea type="text" class="form-control" rows="4"  placeholder="Description" name="description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 ">
+                  <div class="form-group">
+                    <label>Team Manager</label>
+                    <select class="btn btn-sm btn-default" name="manager">
+                        <option value="">---</option>
+                        {% for user in user_list %}
+                            <option value="{{user['id']}}">{{user['name']}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-fill btn-info">Save</button>
+          </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

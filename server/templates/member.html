@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Add Membership</h5>
+          </div>
+           <form method="post" action="">
+          <div class="card-body">
+
+			     <div class="row">
+                <div class="col-md-6 pr-md-5">
+                  <div class="form-group">
+                    <label>User</label>
+                    <select class="btn btn-sm btn-default" name="user">
+                        {% for user in user_list %}
+                            <option value="{{user['id']}}">{{user['name']}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Team</label>
+                    <select class="btn btn-sm btn-default" name="team">
+                        {% for team in team_list %}
+                            <option value="{{team['id']}}">{{team['name']}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Remarks</label>
+                <textarea type="text" class="form-control" rows="4"  placeholder="Description" name="remarks"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-fill btn-info">Save</button>
+          </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
