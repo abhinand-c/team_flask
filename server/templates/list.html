@@ -1,167 +1,157 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="content">
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <div class="card card-tasks">
-          <div class="card-header ">
-            <div class="col-sm-12 text-left">
-              <h2 class="card-title d-inline">Data List</h2>
-              <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                <label class="btn btn-sm btn-info btn-simple active" id="0" onclick="showuser()">
-                  <input type="radio" name="options" checked>
-                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Users</span>
-                  <span class="d-block d-sm-none">
-                    <i class="tim-icons icon-single-02"></i>
-                  </span>
-                </label>
-                <label class="btn btn-sm btn-info btn-simple" id="1" onclick="showteam()">
-                  <input type="radio" class="d-none d-sm-none" name="options">
-                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Team</span>
-                  <span class="d-block d-sm-none">
-                    <i class="tim-icons icon-atom"></i>
-                  </span>
-                </label>
-                <label class="btn btn-sm btn-info btn-simple" id="2" onclick="showmember()">
-                  <input type="radio" class="d-none" name="options">
-                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Team Membership</span>
-                  <span class="d-block d-sm-none">
-                    <i class="tim-icons icon-badge"></i>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-          </div>
-          <div class="card-body ">
-            <div class="table-full-width table-responsive">
-              <table class="table"  id="user">
-                <thead class="text-info">
-                  <tr>
-                    <th>
-                      id
-                    </th>
-                    <th>
-                      name
-                    </th>
-                    <th>
-                      contact
-                    </th>
-                    <th>
-                      email
-                    </th>
-                    <th>
-                      address
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-				{% for user in user_list %}
-                  <tr>
-                    <td>
-                      {{user['id']}}
-                    </td>
-                    <td>
-                      {{user['name']}}
-                    </td>
-                    <td>
-                      {{user['contact']}}
-                    </td>
-                    <td>
-                     {{user['email']}}
-                    </td>
-                    <td>
-                      {{user['address']}}
-                    </td>
-                  </tr>
-				{% endfor %}
-                </tbody>
-
-              </table>
-              <table class="table"  id="team" style="display: none;">
-                <thead class="text-info">
-                  <tr>
-                    <th>
-                      id
-                    </th>
-                    <th>
-                      Team Name
-                    </th>
-                    <th>
-                      Manager
-                    </th>
-                    <th>
-                      description
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {% for team in team_list %}
-                  <tr>
-                    <td>
-                      {{team['id']}}
-                    </td>
-                    <td>
-                      {{team['name']}}
-                    </td>
-                    <td>
-                      {{team['manager']}}
-                    </td>
-                    <td>
-                     {{team['description']}}
-                    </td>
-                  </tr>
-				{% endfor %}
-
-                </tbody>
-
-              </table>
-              <table class="table"  id="membership" style="display: none;">
-                <thead class="text-info">
-                  <tr>
-                    <th>
-                      id
-                    </th>
-                    <th>
-                      Team
-                    </th>
-                    <th>
-                      User
-                    </th>
-                    <th>
-                      Remarks
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {% for member in member_list %}
-                  <tr>
-                    <td>
-                      {{member['id']}}
-                    </td>
-                    <td>
-                      {{member['team']}}
-                    </td>
-                    <td>
-                      {{member['user']}}
-                    </td>
-                    <td>
-                     {{member['remarks']}}
-                    </td>
-                  </tr>
-				{% endfor %}
-
-                </tbody>
-
-              </table>
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-tasks">
+        <div class="card-header ">
+          <div class="col-sm-12 text-left">
+            <h2 class="card-title d-inline">Data List</h2>
+            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+              <label class="btn btn-sm btn-info btn-simple active" id="0" onclick="showuser()">
+                <input type="radio" name="options" checked>
+                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Users</span>
+                <span class="d-block d-sm-none">
+                  <i class="tim-icons icon-single-02"></i>
+                </span>
+              </label>
+              <label class="btn btn-sm btn-info btn-simple" id="1" onclick="showteam()">
+                <input type="radio" class="d-none d-sm-none" name="options">
+                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Team</span>
+                <span class="d-block d-sm-none">
+                  <i class="tim-icons icon-atom"></i>
+                </span>
+              </label>
+              <label class="btn btn-sm btn-info btn-simple" id="2" onclick="showmember()">
+                <input type="radio" class="d-none" name="options">
+                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Team Membership</span>
+                <span class="d-block d-sm-none">
+                  <i class="tim-icons icon-badge"></i>
+                </span>
+              </label>
             </div>
           </div>
         </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table" id="user">
+              <thead class="text-info">
+                <tr>
+                  <th>
+                    id
+                  </th>
+                  <th>
+                    name
+                  </th>
+                  <th>
+                    contact
+                  </th>
+                  <th>
+                    email
+                  </th>
+                  <th>
+                    address
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in user_list %}
+                <tr>
+                  <td>
+                    {{user['id']}}
+                  </td>
+                  <td>
+                    {{user['name']}}
+                  </td>
+                  <td>
+                    {{user['contact']}}
+                  </td>
+                  <td>
+                    {{user['email']}}
+                  </td>
+                  <td>
+                    {{user['address']}}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table class="table" id="team" style="display: none;">
+              <thead class="text-info">
+                <tr>
+                  <th>
+                    id
+                  </th>
+                  <th>
+                    Team Name
+                  </th>
+                  <th>
+                    Manager
+                  </th>
+                  <th>
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for team in team_list %}
+                <tr>
+                  <td>
+                    {{team['id']}}
+                  </td>
+                  <td>
+                    {{team['name']}}
+                  </td>
+                  <td>
+                    {{team['manager']}}
+                  </td>
+                  <td>
+                    {{team['description']}}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <table class="table" id="membership" style="display: none;">
+              <thead class="text-info">
+                <tr>
+                  <th>
+                    id
+                  </th>
+                  <th>
+                    Team
+                  </th>
+                  <th>
+                    User
+                  </th>
+                  <th>
+                    Remarks
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for member in member_list %}
+                <tr>
+                  <td>
+                    {{member['id']}}
+                  </td>
+                  <td>
+                    {{member['team']}}
+                  </td>
+                  <td>
+                    {{member['user']}}
+                  </td>
+                  <td>
+                    {{member['remarks']}}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
+</div>
 {% endblock %}
