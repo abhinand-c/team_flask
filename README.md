@@ -3,7 +3,7 @@
 
 Performs database initialisation, Table creation, Insert operation and Select * operation.
 
-
+----
 ### Instructions to run
 1. Clone the repo using any of the following commands
    - `git clone https://github.com/abhinand-c/team_flask.git`
@@ -18,3 +18,14 @@ Performs database initialisation, Table creation, Insert operation and Select * 
     `python .\database\initialiser.py`
 8. Run server using  
     `python runserver.py`
+
+----
+#### Dummy .env file
+
+Copy the code below and save it in your cloned repo as `.env` file, also add the change values as needed.
+```
+DB_USER=username
+DB_PASSWORD=password
+DB_HOST=localhost
+DB_NAME=databasename
+```
